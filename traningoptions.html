@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Training Program</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Bebas Neue', sans-serif;
+      background: url('p.jpg') no-repeat center center/cover;
+      color: white;
+      overflow-x: hidden;
+      cursor: none;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin: 60px 0 40px;
+      text-transform: uppercase;
+      color: #ffcc00;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #ffcc00, #ff9900);
+      color: black;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      text-transform: uppercase;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      transition: background 0.3s ease;
+      z-index: 100;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(45deg, #ff9900, #ffcc00);
+    }
+
+    .training-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      padding: 30px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .training-card {
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid #ffcc00;
+      border-radius: 20px;
+      width: 320px;
+      height: 460px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .training-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+    }
+
+    .training-card img {
+      width: 100%;
+      height: 60%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #ffcc00;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-content p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    /* Custom Cursor */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      background-color: #ffcc00;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+      mix-blend-mode: difference;
+      z-index: 999;
+      left: 0;
+      top: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      h1 {
+        font-size: 3rem;
+        margin: 40px 0 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .training-card {
+        width: 90%;
+        max-width: 300px;
+        height: 420px;
+      }
+
+      .card-content h2 {
+        font-size: 2rem;
+      }
+
+      .card-content p {
+        font-size: 1rem;
+      }
+
+      .training-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+
+  <!-- Back Button -->
+  <a href="training.html" class="back-btn">← Back</a>
+
+  <!-- Page Heading -->
+  <h1>Choose Your Training Program</h1>
+
+  <!-- Cards Section -->
+  <div class="training-container">
+
+    <!-- Workout Card -->
+    <div class="training-card" onclick="window.location.href='workout.html'">
+      <img src="w.jpg" alt="Workout Image">
+      <div class="card-content">
+        <h2>Workout</h2>
+        <p>Warm-up workouts that build strength and endurance for better performance.</p>
+      </div>
+    </div>
+
+    <!-- MMA Training Card -->
+    <div class="training-card" onclick="window.location.href='mma-training.html'">
+      <img src="kick.png" alt="MMA Training">
+      <div class="card-content">
+        <h2>MMA Training</h2>
+        <p>Learn MMA basics for fitness and self-defense in real-life situations.</p>
+      </div>
+    </div>
+
+    <!-- Boxing Card -->
+    <div class="training-card" onclick="window.location.href='boxing.html'">
+      <img src="punch.png" alt="Boxing">
+      <div class="card-content">
+        <h2>Boxing</h2>
+        <p>Master boxing techniques to boost your strength, speed, and focus.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cursor and Animation Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cursor = document.querySelector('.cursor');
+
+      // Cursor Movement
+      document.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, {
+          left: e.clientX + "px",
+          top: e.clientY + "px",
+          duration: 0.1,
+          ease: "power1.out"
+        });
+      });
+
+      // Cursor Hover Animation
+      document.querySelectorAll('.training-card, .back-btn').forEach(el => {
+        el.addEventListener('mouseenter', () => gsap.to(cursor, { width: 40, height: 40, backgroundColor: "#ff9900", duration: 0.2 }));
+        el.addEventListener('mouseleave', () => gsap.to(cursor, { width: 20, height: 20, backgroundColor: "#ffcc00", duration: 0.2 }));
+      });
+
+      // GSAP Entry Animations
+      gsap.from(".training-card", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power2.out"
+      });
+
+      gsap.from("h1", {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+        ease: "power2.out"
+      });
+    });
+  </script>
+
+</body>
+
+</html>

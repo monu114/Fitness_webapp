@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MMA Assistive Learning</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #111;
+            color: white;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Cursor Animation */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, width 0.2s, height 0.2s;
+            mix-blend-mode: difference;
+            z-index: 1000;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            background: transparent;
+            z-index: 999;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* About Page Styling */
+        .about-section {
+            position: relative;
+            height: 100vh;
+            background: url('dumbbell-1966247_1280.jpg') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 10%;
+        }
+
+        .overlay {
+            position: relative;
+            width: 40%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            z-index: 2;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 3;
+            text-align: left;
+        }
+
+        .about-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .cta {
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            border: none;
+            cursor: pointer;
+            color: #111;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            z-index: 3;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .about-title {
+                font-size: 2.5rem;
+            }
+            .about-text {
+                font-size: 1.2rem;
+            }
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .overlay {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="training.html" class="nav-item">Training</a>
+        <a href="Nutrition.html" class="nav-item">Nutrition</a>
+        <a href="ask ai.html" class="nav-item">Ask AI</a>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="overlay">
+            <div class="about-content">
+                <div class="about-title">About Us</div>
+                <p class="about-text">
+                    Welcome to [Your Website Name], your go-to platform for MMA, boxing, and fitness. We provide expert training, AI-powered coaching, and structured workout plans to help you succeed.
+                </p>
+                <p class="about-text">
+                    <strong>What We Offer:</strong><br>
+                    - MMA & Boxing: Striking, footwork & defense.<br>
+                    - Workout Plans: Strength & endurance training.<br>
+                    - AI Coaching: Real-time movement feedback.<br>
+                    - AI Chatbot: 24/7 training support.
+                </p>
+                <a href="signup.html" class="cta">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cursor = document.querySelector('.cursor');
+
+            /* Cursor Movement */
+            document.addEventListener('mousemove', (e) => {
+                gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power1.out" });
+            });
+
+            /* Cursor Animation on Hover */
+            document.querySelectorAll('.nav-item, .cta').forEach(el => {
+                el.addEventListener('mouseenter', () => gsap.to(cursor, { width: 40, height: 40, backgroundColor: "#ff9900", duration: 0.2 }));
+                el.addEventListener('mouseleave', () => gsap.to(cursor, { width: 20, height: 20, backgroundColor: "#ffcc00", duration: 0.2 }));
+            });
+        });
+    </script>
+</body>
+</html>

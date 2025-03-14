@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Guide</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            cursor: none;
+            position: relative;
+            background: black;
+        }
+
+        /* Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: difference;
+            z-index: 1000;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #ffcc00;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 50px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #ffcc00;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        /* Cards Container */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 40px;
+            justify-items: center;
+        }
+
+        /* Card */
+        .card {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card__content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            text-align: center;
+        }
+
+        .card__title {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .card__description {
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        /* Hover Effects */
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card:hover .card__content {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="training.html" class="nav-item">Training</a>
+        <a href="Nutrition.html" class="nav-item">Nutrition</a>
+        <a href="ask ai.html" class="nav-item">Ask AI</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Nutrition for Champions</h1>
+        <p>Power up with traditional and natural foods for strength, recovery, and performance.</p>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards">
+        <div class="card">
+            <img src="Ragi malt.jpg" alt="Ragi Malt">
+            <div class="card__content">
+                <p class="card__title">Ragi Malt</p>
+                <p class="card__description">High in calcium, fiber, and iron. Excellent for bones and digestion. Helps boost energy naturally.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Horse Gram.jpg" alt="Horse Gram">
+            <div class="card__content">
+                <p class="card__title">Horse Gram</p>
+                <p class="card__description">Packed with protein and iron. Improves stamina and aids in muscle recovery.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="millets.jpg" alt="Millets Mix">
+            <div class="card__content">
+                <p class="card__title">Millets Mix</p>
+                <p class="card__description">Rich in fiber, minerals, and protein. Great for sustained energy and digestion.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Kabuli Chana.jpg" alt="Kabuli Chana">
+            <div class="card__content">
+                <p class="card__title">Kabuli Chana</p>
+                <p class="card__description">Loaded with protein, vitamins, and minerals. Supports muscle building and repair.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursor Script -->
+    <script>
+        const cursor = document.querySelector('.cursor');
+
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.left = e.clientX + 'px';
+        });
+
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('mouseover', () => cursor.style.transform = 'scale(2)');
+            item.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+        });
+    </script>
+
+</body>
+
+</html>

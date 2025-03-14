@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Bebas Neue', sans-serif;
+      background: url('p.jpg') no-repeat center center/cover;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      cursor: none;
+    }
+
+    /* Overlay */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 30px;
+      padding: 15px 20px;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      z-index: 3;
+    }
+
+    .nav-item {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-item:hover {
+      color: #ffcc00;
+    }
+
+    /* Content */
+    .content-box {
+      background: rgba(0, 0, 0, 0.6); /* Transparent black for rectangle effect */
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      max-width: 900px;
+      margin: 20px;
+      z-index: 2;
+      backdrop-filter: blur(10px); /* Optional: adds glass-like blur effect */
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+      line-height: 1.5;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(45deg, #ffcc00, #ff9900);
+      color: black;
+      text-decoration: none;
+      font-size: 1.5rem;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta:hover {
+      background: #ff9900;
+      transform: scale(1.1);
+    }
+
+    /* Custom Cursor */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      background-color: #ffcc00;
+      border-radius: 50%;
+      position: absolute;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+      mix-blend-mode: difference;
+      z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+        padding: 0 20px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        padding: 0 20px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 15px;
+        font-size: 1.2rem;
+      }
+
+      .content-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cursor"></div>
+  <div class="overlay"></div>  
+  <nav class="navbar">
+    <a href="index.html" class="nav-item">Home</a>
+    <a href="about.html" class="nav-item">About Us</a>
+    <a href="training.html" class="nav-item">Training</a>
+    <a href="Nutrition.html" class="nav-item">Nutrition</a>
+    <a href="ask ai.html" class="nav-item">Ask AI</a>
+  </nav>
+  <div class="content-box">
+    <h1>Join Our Training Sessions</h1>
+    <p>
+      Improve your skills and fitness with our specially designed training programs, including MMA, Boxing, and personalized workout sessions tailored just for you. Whether you're a beginner or an experienced athlete, our expert trainers will guide you step by step to achieve your goals. We focus on building strength, endurance, and agility while ensuring proper techniques and safety. Explore a variety of disciplines such as strength training, cardio workouts, self-defense, and flexibility improvement routines. Join us to push your limits, stay motivated, and become the best version of yourself — physically and mentally. Click below to choose your training program and start your transformation journey today!
+    </p>
+    <a href="traningoptions.html" class="cta">Join Training</a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cursor = document.querySelector('.cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      document.querySelectorAll('.nav-item, .cta').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.style.width = '40px';
+          cursor.style.height = '40px';
+          cursor.style.backgroundColor = '#ff9900';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.style.width = '20px';
+          cursor.style.height = '20px';
+          cursor.style.backgroundColor = '#ffcc00';
+        });
+      });
+
+      // Smooth fade-in animations using GSAP
+      gsap.from(".content-box", { opacity: 0, y: 50, duration: 1.5, ease: "power2.out" });
+    });
+  </script>
+
+</body>
+
+</html>
